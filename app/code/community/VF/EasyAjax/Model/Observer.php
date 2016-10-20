@@ -49,6 +49,11 @@ class VF_EasyAjax_Model_Observer
                 (array) Mage::app()->getRequest()->getParam('action_content', array()),
                 (array) Mage::app()->getRequest()->getParam('custom_content', array())
             );
+
+            if (Mage::helper('core')->isModuleEnabled('Lesti_Fpc')) {
+                Mage::getModel('fpc/observer')->controllerActionPostdispatch();
+            }
+
             $response->sendResponse();
         }
     }
